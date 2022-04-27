@@ -1,0 +1,24 @@
+
+<script>
+  $('#carrito').click(function () {
+    let productos = JSON.parse(localStorage.getItem("productos"))
+    let lista = ''
+    productos.forEach(p => lista += `
+      <div class="producto"> <img width="100" src="/img/${p}.png" alt="">  </div>
+      `)
+     $('#productos').html(lista)
+  })
+
+</script>
+
+<div class="modal fade" id="modalproductos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div id="productos"></div>
+        <p class="text-center">Mercaderia Agregada</p>
+      </div>
+    </div>
+  </div>
+</div>

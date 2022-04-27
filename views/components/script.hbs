@@ -1,0 +1,25 @@
+
+<script>
+    let itemSeleccionado = []
+    localStorage.setItem('productos', JSON.stringify(itemSeleccionado))
+        
+    $('.items').click(function(e){
+      $(this).addClass('seleccionado')
+      let itemSeleccionado = JSON.parse(localStorage.getItem("productos"))
+     
+      let noVacio = itemSeleccionado.find( i =>  i ===  this.id )
+      console.log("noVacio",noVacio)
+      if(!noVacio){
+        itemSeleccionado.push(this.id)
+         localStorage.setItem('productos', JSON.stringify(itemSeleccionado) )
+      }
+    })
+
+     $('.items').dblclick(function(){
+      $(this).removeClass('seleccionado')
+      let itemSeleccionados = JSON.parse(localStorage.getItem("productos"))
+      let itemRemovido = itemSeleccionados.filter( p => p !== this.id)
+      localStorage.setItem('productos', JSON.stringify(itemRemovido) )
+    })
+    
+</script>
